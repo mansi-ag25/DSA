@@ -131,39 +131,29 @@ class Solution
     static ArrayList<Integer> topView(Node root)
     {
         // add your code
-        
-        Queue<Pair> q=new ArrayDeque<>();
+        Queue<Pair> q=new LinkedList<>();
         Map<Integer,Integer> mp=new TreeMap<>();
         q.add(new Pair(0,root));
-        
         while(!q.isEmpty()){
             Pair curr=q.poll();
             if(!mp.containsKey(curr.hd)){
                 mp.put(curr.hd,curr.node.data);
             }
-            
             if(curr.node.left!=null){
                 q.add(new Pair(curr.hd-1,curr.node.left));
-                
             }
-            
-             if(curr.node.right!=null){
+            if(curr.node.right!=null){
                 q.add(new Pair(curr.hd+1,curr.node.right));
-                
             }
-            
-            
         }
         
         ArrayList<Integer> lst=new ArrayList<>();
-        for(Map.Entry<Integer,Integer> entry:mp.entrySet()){
+        for (Map.Entry<Integer,Integer> entry:mp.entrySet()){
             lst.add(entry.getValue());
         }
         
         
         return lst;
-        
-        
     }
     
     static class Pair{
