@@ -36,27 +36,24 @@ class Solution
     { 
         // Your code here
         Stack<Long> sk=new Stack<>();
-        long[] brr=new long[n];
-        
+        long brr[]=new long[arr.length];
         int i=arr.length-1;
-        
         while(i>=0){
-           while(!sk.isEmpty() && sk.peek()<=arr[i]){
-               sk.pop();
-           }
-           
-           if(sk.isEmpty()){
-               brr[i]=-1;
-           }
-           else{
-               brr[i]=sk.peek();
-           }
+            while(!sk.isEmpty() && sk.peek()<=arr[i]){
+                sk.pop();
+            }
             
+            if(sk.isEmpty()){
+                brr[i]=-1;
+            }
+            
+            else{
+                brr[i]=sk.peek();
+            }
             sk.push(arr[i]);
             i--;
         }
         
         return brr;
-        
     } 
 }
